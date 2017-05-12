@@ -1,4 +1,4 @@
-package batch
+package syncker
 
 import (
 	"go.uber.org/zap"

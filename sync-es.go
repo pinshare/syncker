@@ -1,7 +1,7 @@
-package batch
+package syncker
 
 import (
-	"strconv"
+	"fmt"
 
 	_ "github.com/ziutek/mymysql/mysql"
 	_ "github.com/ziutek/mymysql/native"
@@ -32,7 +32,7 @@ func SyncRow(c *config.Config, resp *service.PinResponse) {
 	_, err = client.Index().
 		Index(c.ES.Index).
 		Type("pins").
-		Id(strconv.Itoa(resp.Id)).
+		Id(fmt.Sprint(resp.Id)).
 		BodyJson(resp).
 		Do(context.Background())
 	if err != nil {
@@ -55,7 +55,7 @@ func DeleteRow(c *config.Config, id int) {
 	res, err := client.Delete().
 		Index(c.ES.Index).
 		Type("pins").
-		Id(strconv.Itoa(id)).
+		Id(fmt.Sprint(id)).
 		Do(context.Background())
 	if err != nil {
 		sLogger.Error(err)
