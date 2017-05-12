@@ -1,0 +1,15 @@
+package: .
+import:
+- package: github.com/pinshare/config
+- package: github.com/pinshare/spec
+  subpackages:
+  - service
+- package: github.com/ziutek/mymysql
+  subpackages:
+  - mysql
+  - native
+- package: go.uber.org/zap
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: gopkg.in/olivere/elastic.v5
